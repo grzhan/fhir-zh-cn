@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+
+<!-- template-search.html -->
+       
+<%settitle Resource {xtitle} - Search Parameters%>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<%file newheader%>
+</head>
+<body>
+<%file newnavbar%>
+
+<div class="col-12">
+
+<%resheader search%>
+<h2><%title%></h2>
+<table class="<%fmm-style%>"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td>
+  <td id="ballot"><%sstatus%></td><td><%sec-cat%></td><!--!ns!--><td><%complinks%></td></tr></table>
+
+<p>
+Search parameters for the <%title%> resource. Also check the <a href="[%extensions-location%]extensions-[%extcname%].html">Extensions registry</a> for search parameters 
+on extensions related to this resource.
+</p>
+<p>
+The <a href="search.html#all">common parameters</a> also apply. See <a href="search.html">Searching</a> for more 
+information about searching in REST, messaging, and services.
+</p>
+<hr/>
+
+<%searchParamTable%>
+
+</div>
+
+<%file newfooter%>
+    
+</body>
+</html>

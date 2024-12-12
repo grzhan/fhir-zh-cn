@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="transport-status"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/transport-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.4.1929"/>
+  </identifier>
+  <version value="5.0.0"/>
+  <name value="TransportStatus"/>
+  <title value="Transport Status"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2021-01-05T10:01:24+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="Status of transport."/>
+  <caseSensitive value="true"/>
+  <valueSet value="http://hl7.org/fhir/ValueSet/transport-status"/>
+  <content value="complete"/>
+  <concept>
+    <code value="in-progress"/>
+    <display value="In Progress"/>
+    <definition value="Transport has started but not completed."/>
+  </concept>
+  <concept>
+    <code value="completed"/>
+    <display value="Completed"/>
+    <definition value="Transport has been completed."/>
+  </concept>
+  <concept>
+    <code value="abandoned"/>
+    <display value="Abandoned"/>
+    <definition value="Transport was started but not completed."/>
+  </concept>
+  <concept>
+    <code value="cancelled"/>
+    <display value="Cancelled"/>
+    <definition value="Transport was cancelled before started."/>
+  </concept>
+  <concept>
+    <code value="planned"/>
+    <display value="Planned"/>
+    <definition value="Planned transport that is not yet requested."/>
+  </concept>
+  <concept>
+    <code value="entered-in-error"/>
+    <display value="Entered In Error"/>
+    <definition value="This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be &quot;abandoned&quot; rather than &quot;entered-in-error&quot;.)."/>
+  </concept>
+</CodeSystem>

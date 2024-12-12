@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+
+[%settitle Asynchronous patterns%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  [%file newheader%]
+</head>
+
+<body>
+  [%file newnavbar%]
+
+
+  <h2 id="asynchronous-request-patterns">Asynchronous Request Patterns</h2>
+  <table class="colsi">
+    <tr>
+      <td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td>
+      <td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td>
+      <td id="ballot"><a href="versions.html#std-process">Standards Status</a>:
+        <!--!ns!--><a href="versions.html#std-process">Informative</a>
+      </td>
+    </tr>
+  </table>
+
+  <h3 id="use-case">Use Case</h3>
+  <p>All of the interactions defined in the <a href="http.html">RESTful API</a> are described as synchronous operations
+    - that is, the client makes a query and waits for the server to respond with the outcome in the HTTP response. This
+    pattern is not always suitable when significant server side processing is necessary or when substantial amounts of
+    data must be returned.</p>
+  <p>A good example of this is the <a href="http://hl7.org/fhir/uv/bulkdata/export.html">$export operation</a>, where
+    simple searches may result in large amounts of data.</p>
+  <p>The asynchronous request patterns, based on <a href="https://tools.ietf.org/html/rfc7240#section-4.1">rfc 7240</a>,
+    cater to this use case and can be used for FHIR <a href="http.html">Defined Interactions</a> and <a
+      href="operations.html">Operations</a>.
+  </p>
+
+  <h3 id="patterns">Patterns</h3>
+  <ul>
+    <li><a href="async-bulk.html">Asynchronous Bulk Data Request</a> - for use in FHIR <a href="operations.html">Operations</a>
+      and <a href="http.html">Defined Interactions</a> that return a large amount of data. This pattern returns a
+      manifest with links to data files containing FHIR resources.
+    </li>
+    <li><a href="async-bundle.html">Asynchronous Interaction Request</a> - for use in FHIR <a
+        href="operations.html">Operations</a> and <a href="http.html">Defined Interactions</a> that are not processed
+      synchronously or may take a lot of time to process. For example, a server that accepts a high volume of sensor data and
+      queues it for saving, or an operation that re-indexes the data in a server to add a new search parameter. This
+      pattern returns a <a href="bundle.html">Bundle Resource</a>.</li>
+  </ul>
+
+  [%file newfooter%]
+</body>
+
+</html>

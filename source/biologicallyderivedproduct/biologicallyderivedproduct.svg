@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="n332"
+   version="1.1"
+   width="1219.2"
+   height="214.0"
+   sodipodi:docname="biologicallyderivedproduct.svg"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview161"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.0219817"
+     inkscape:cx="609.59996"
+     inkscape:cy="108.12327"
+     inkscape:window-width="1390"
+     inkscape:window-height="1205"
+     inkscape:window-x="0"
+     inkscape:window-y="52"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="n332" />
+  <defs
+     id="defs18">
+    <filter
+       id="shadow1"
+       x="-0.019428153"
+       y="-0.067948718"
+       width="1.0498534"
+       height="1.174359">
+      <feOffset
+         result="offOut"
+         in="SourceGraphic"
+         dx="3"
+         dy="3"
+         id="feOffset9" />
+      <feColorMatrix
+         result="matrixOut"
+         in="offOut"
+         type="matrix"
+         values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"
+         id="feColorMatrix11" />
+      <feGaussianBlur
+         result="blurOut"
+         in="matrixOut"
+         stdDeviation="2"
+         id="feGaussianBlur13" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut"
+         mode="normal"
+         id="feBlend15" />
+    </filter>
+  </defs>
+  <g
+     id="n333">
+    <rect
+       id="BiologicallyDerivedProduct"
+       x="0.0"
+       y="0.0"
+       rx="4"
+       ry="4"
+       width="340.56000000000006"
+       height="204.0"
+       filter="url(#shadow1)"
+       style="fill:#fff9ec;stroke:black;stroke-width:1" />
+    <line
+       id="n334"
+       x1="0.0"
+       y1="28.0"
+       x2="340.56000000000006"
+       y2="28.0"
+       style="stroke:dimgrey;stroke-width:1" />
+    <text
+       id="n335"
+       x="170.28000000000003"
+       y="20.0"
+       fill="black"
+       class="diagram-class-title  diagram-class-resource">BiologicallyDerivedProduct<tspan
+   class="diagram-class-title-link"
+   id="tspan23"> (<a
+   id="n336"
+   xlink:href="domainresource.html#DomainResource"
+   class="diagram-class-reference"
+   style="font-style: italic">DomainResource</a>)</tspan></text>
+    <text
+       id="n337"
+       x="6.0"
+       y="42.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n338"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.productCategory"><title
+   id="title26">Broad category of this product</title>productCategory</a> : <a
+   id="n339"
+   xlink:href="datatypes.html#Coding">Coding</a> [0..1] « <a
+   id="n340"
+   xlink:href="valueset-product-category.html"><title
+   id="n341">null (Strength=Example)</title>BiologicallyDerivedProductCat...</a>?? »</text>
+    <text
+       id="n347"
+       x="6.0"
+       y="56.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n348"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.productCode"><title
+   id="title33">A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions</title>productCode</a> : <a
+   id="n349"
+   xlink:href="datatypes.html#CodeableConcept">CodeableConcept</a> [0..1] « <a
+   id="n350"
+   xlink:href="valueset-biologicallyderived-productcodes.html"><title
+     id="n351">null (Strength=Example)</title></a></text>
+    <text
+       id="n352"
+       x="26.0"
+       y="70.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n353"
+   xlink:href="valueset-biologicallyderived-productcodes.html">BiologicallyDerivedProductCod...</a>?? »</text>
+    <text
+       id="n361"
+       x="6.0"
+       y="84.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n362"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.parent"><title
+   id="title42">Parent product (if any) for this biologically-derived product</title>parent</a> : <a
+   id="n363"
+   xlink:href="references.html#Reference">Reference</a> [0..*] « <a
+   id="n364"
+   xlink:href="biologicallyderivedproduct.html#BiologicallyDerivedProduct">BiologicallyDerivedProduct</a> »</text>
+    <text
+       id="n369"
+       x="6.0"
+       y="98.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n370"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.request"><title
+   id="title48">Request to obtain and/or infuse this biologically derived product</title>request</a> : <a
+   id="n371"
+   xlink:href="references.html#Reference">Reference</a> [0..*] « <a
+   id="n372"
+   xlink:href="servicerequest.html#ServiceRequest">ServiceRequest</a> »</text>
+    <text
+       id="n377"
+       x="6.0"
+       y="112.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n378"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.identifier"><title
+   id="title54">Unique instance identifiers assigned to a biologically derived product. Note: This is a business identifier, not a resource identifier</title>identifier</a> : <a
+   id="n379"
+   xlink:href="datatypes.html#Identifier">Identifier</a> [0..*]</text>
+    <text
+       id="n383"
+       x="6.0"
+       y="126.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n384"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.biologicalSourceEvent"><title
+   id="title59">An identifier that supports traceability to the event during which material in this product from one or more biological entities was obtained or pooled</title>biologicalSourceEvent</a> : <a
+   id="n385"
+   xlink:href="datatypes.html#Identifier">Identifier</a> [0..1]</text>
+    <text
+       id="n389"
+       x="6.0"
+       y="140.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n390"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.processingFacility"><title
+   id="title64">Processing facilities responsible for the labeling and distribution of this biologically derived product</title>processingFacility</a> : <a
+   id="n391"
+   xlink:href="references.html#Reference">Reference</a> [0..*] « <a
+   id="n392"
+   xlink:href="organization.html#Organization">Organization</a> »</text>
+    <text
+       id="n397"
+       x="6.0"
+       y="154.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n398"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.division"><title
+   id="title70">A unique identifier for an aliquot of a product.  Used to distinguish individual aliquots of a product carrying the same biologicalSource and productCode identifiers</title>division</a> : <a
+   id="n399"
+   xlink:href="datatypes.html#string">string</a> [0..1]</text>
+    <text
+       id="n403"
+       x="6.0"
+       y="168.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n404"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.productStatus"><title
+   id="title75">Whether the product is currently available</title>productStatus</a> : <a
+   id="n405"
+   xlink:href="datatypes.html#Coding">Coding</a> [0..1] « <a
+   id="n406"
+   xlink:href="valueset-biologicallyderived-product-status.html"><title
+   id="n407">null (Strength=Example)</title>BiologicallyDerivedProductSta...</a>?? »</text>
+    <text
+       id="n413"
+       x="6.0"
+       y="182.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n414"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.expirationDate"><title
+   id="title82">Date, and where relevant time, of expiration</title>expirationDate</a> : <a
+   id="n415"
+   xlink:href="datatypes.html#dateTime">dateTime</a> [0..1]</text>
+    <text
+       id="n419"
+       x="6.0"
+       y="196.0"
+       fill="black"
+       class="diagram-class-detail"><a
+   id="n420"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.storageTempRequirements"><title
+   id="title87">The temperature requirements for storage of the biologically-derived product</title>storageTempRequirements</a> : <a
+   id="n421"
+   xlink:href="datatypes.html#Range">Range</a> [0..1]</text>
+  </g>
+  <g
+     id="n425"
+     transform="translate(146.77367,19.569822)">
+    <rect
+       id="BiologicallyDerivedProduct.collection"
+       x="377.52563"
+       y="-5.8500638"
+       rx="4"
+       ry="4"
+       width="272.79999"
+       height="78"
+       filter="url(#shadow1)"
+       style="fill:#fff9ec;stroke:#000000;stroke-width:1" />
+    <line
+       id="n426"
+       x1="377.52563"
+       y1="22.149937"
+       x2="650.32562"
+       y2="22.149937"
+       style="stroke:#696969;stroke-width:1" />
+    <text
+       id="n427"
+       x="513.9256"
+       y="14.149937"
+       fill="#000000"
+       class="diagram-class-title">Collection</text>
+    <text
+       id="n428"
+       x="383.52563"
+       y="36.149937"
+       fill="#000000"
+       class="diagram-class-detail"><a
+   id="n429"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.collection.collector"><title
+   id="title96">Healthcare professional who is performing the collection</title>collector</a> : <a
+   id="n430"
+   xlink:href="references.html#Reference">Reference</a> [0..1] « <a
+   id="n431"
+   xlink:href="practitioner.html#Practitioner">Practitioner</a>|<a
+   id="n432"
+   xlink:href="practitionerrole.html#PractitionerRole">PractitionerRole</a> »</text>
+    <text
+       id="n438"
+       x="383.52563"
+       y="50.149937"
+       fill="#000000"
+       class="diagram-class-detail"><a
+   id="n439"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.collection.source"><title
+   id="title103">The patient or entity, such as a hospital or vendor in the case of a processed/manipulated/manufactured product, providing the product</title>source</a> : <a
+   id="n440"
+   xlink:href="references.html#Reference">Reference</a> [0..1] « <a
+   id="n441"
+   xlink:href="patient.html#Patient">Patient</a>|<a
+   id="n442"
+   xlink:href="organization.html#Organization">Organization</a> »</text>
+    <text
+       id="n448"
+       x="383.52563"
+       y="64.149933"
+       fill="#000000"
+       class="diagram-class-detail"><a
+   id="n449"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.collection.collected_x_"><title
+   id="title110">Time of product collection</title>collected[x]</a> : <a
+   id="n450"
+   xlink:href="types.html#DataType">DataType</a> [0..1] « <a
+   id="n451"
+   xlink:href="datatypes.html#dateTime">dateTime</a>|<a
+   id="n452"
+   xlink:href="datatypes.html#Period">Period</a> »</text>
+  </g>
+  <g
+     id="n458"
+     transform="translate(-198.6337,117.41894)">
+    <rect
+       id="BiologicallyDerivedProduct.property"
+       x="720"
+       y="0"
+       rx="4"
+       ry="4"
+       width="299.20001"
+       height="78"
+       filter="url(#shadow1)"
+       style="fill:#fff9ec;stroke:#000000;stroke-width:1" />
+    <line
+       id="n459"
+       x1="720"
+       y1="28"
+       x2="1019.2"
+       y2="28"
+       style="stroke:#696969;stroke-width:1" />
+    <text
+       id="n460"
+       x="869.59998"
+       y="20"
+       fill="#000000"
+       class="diagram-class-title">Property</text>
+    <text
+       id="n461"
+       x="726"
+       y="42"
+       fill="#000000"
+       class="diagram-class-detail"><a
+   id="n462"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.property.type"><title
+   id="title121">Code that specifies the property. It should reference an established coding system</title>type</a> : <a
+   id="n463"
+   xlink:href="datatypes.html#CodeableConcept">CodeableConcept</a> [1..1] « <a
+   id="n464"
+   xlink:href="valueset-biologicallyderived-product-property-type-codes.html"><title
+   id="n465">null (Strength=Example)</title>BiologicallyDerivedProductPro...</a>?? »</text>
+    <text
+       id="n471"
+       x="726"
+       y="56"
+       fill="#000000"
+       class="diagram-class-detail"><a
+   id="n472"
+   xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.property.value_x_"><title
+   id="title128">Property values</title>value[x]</a> : <a
+   id="n473"
+   xlink:href="types.html#DataType">DataType</a> [1..1] « <a
+   id="n474"
+   xlink:href="datatypes.html#boolean">boolean</a>|<a
+   id="n475"
+   xlink:href="datatypes.html#integer">integer</a>|<a
+   id="n476"
+   xlink:href="datatypes.html#CodeableConcept">CodeableConcept</a>|<a
+   id="n477"
+   xlink:href="datatypes.html#Period">Period</a>|</text>
+    <text
+       id="n478"
+       x="746"
+       y="70"
+       fill="#000000"
+       class="diagram-class-detail"><a
+   id="n479"
+   xlink:href="datatypes.html#Quantity">Quantity</a>|<a
+   id="n480"
+   xlink:href="datatypes.html#Range">Range</a>|<a
+   id="n481"
+   xlink:href="datatypes.html#Ratio">Ratio</a>|<a
+   id="n482"
+   xlink:href="datatypes.html#string">string</a>|<a
+   id="n483"
+   xlink:href="datatypes.html#Attachment">Attachment</a> »</text>
+  </g>
+  <line
+     id="n497"
+     x1="340.56000000000006"
+     y1="67.88407375873868"
+     x2="377.525627"
+     y2="60.47793913227652"
+     style="stroke:navy;stroke-width:1" />
+  <polygon
+     id="n498"
+     points="340.56000000000006,67.88407375873868 346.56000000000006,71.88407375873868 352.56000000000006,67.88407375873868 346.56000000000006,63.88407375873868 340.56000000000006,67.88407375873868"
+     style="fill:navy;stroke:navy;stroke-width:1"
+     transform="rotate(-11.329319593289169 340.56000000000006 67.88407375873868)" />
+  <rect
+     id="n499"
+     x="337.0"
+     y="57.0"
+     width="44.0"
+     height="18.0"
+     style="fill:white;stroke:black;stroke-width:0" />
+  <text
+     id="n500"
+     x="359.0"
+     y="67.0"
+     fill="black"
+     class="diagram-class-linkage"><a
+       id="n501"
+       xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.collection"><title
+   id="title147">How this product was collected</title>collection</a></text>
+  <text
+     id="n502"
+     x="357.525627"
+     y="56.47793913227652"
+     fill="black"
+     class="diagram-class-linkage">[0..1]</text>
+  <line
+     id="n503"
+     x1="340.56000000000006"
+     y1="86.65989818681004"
+     x2="720.0"
+     y2="52.477092032259904"
+     style="stroke:navy;stroke-width:1" />
+  <polygon
+     id="n504"
+     points="340.56000000000006,86.65989818681004 346.56000000000006,90.65989818681004 352.56000000000006,86.65989818681004 346.56000000000006,82.65989818681004 340.56000000000006,86.65989818681004"
+     style="fill:navy;stroke:navy;stroke-width:1"
+     transform="rotate(-5.147738389707945 340.56000000000006 86.65989818681004)" />
+  <rect
+     id="n505"
+     x="512.5"
+     y="62.0"
+     width="35.0"
+     height="18.0"
+     style="fill:white;stroke:black;stroke-width:0" />
+  <text
+     id="n506"
+     x="530.0"
+     y="72.0"
+     fill="black"
+     class="diagram-class-linkage"><a
+       id="n507"
+       xlink:href="biologicallyderivedproduct-definitions.html#BiologicallyDerivedProduct.property"><title
+   id="title155">A property that is specific to this BiologicallyDerviedProduct instance</title>property</a></text>
+  <text
+     id="n508"
+     x="700.0"
+     y="48.477092032259904"
+     fill="black"
+     class="diagram-class-linkage">[0..*]</text>
+</svg>

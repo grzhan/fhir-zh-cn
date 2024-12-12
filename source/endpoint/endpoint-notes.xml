@@ -1,0 +1,9 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+	<!-- insert xhtml content here -->
+	<a name="notes"></a>
+	<h2>Notes</h2>
+	<ul>
+		<li>The IHE connection types that were defined in R4 have been moved to IHE defined profiles and vocabulary at <a href="https://profiles.ihe.net/ITI/mCSD">https://profiles.ihe.net/ITI/mCSD</a></li>
+	</ul>
+</div>
