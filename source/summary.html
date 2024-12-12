@@ -18,8 +18,8 @@
 <table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> 工作组</td><td id="fmm"><a href="versions.html#maturity">成熟度</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">标准状态</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
-FHIR® – 快速医疗互操作性资源 (hl7.org/fhir) – 是由 HL7 创建的新一代标准框架。 FHIR 结合了 HL7 
-<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">v2</a>、 <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">v3</a> 和 <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> 产品线的最佳特性。FHIR 利用了最新的 Web 标准，并着重聚焦于标准的可实现性。
+FHIR® –  Fast Health Interoperable Resources (快速卫生信息交互资源) – 是由 HL7 创建的新一代标准框架。 FHIR 结合了 HL7 
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">v2</a>、 <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">v3</a> 和 <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> 的最佳特性。FHIR 利用了最新的 Web 标准，并着重聚焦于标准的可实现性。
 </p>
 <p>
 FHIR 解决方案是由一组被称为“资源”（Resources）的模块化组件构建而成的。这些资源可以轻松地组装成能够解决现实世界中临床和管理问题的工作系统，其成本仅为现有替代方案的一小部分。FHIR 适用于多种上下文环境 —— 包括移动端应用程序、云端通信、基于 EHR 电子健康记录的数据共享、大型医疗机构提供商的服务器通信等，用途广泛。
@@ -30,15 +30,15 @@ FHIR 解决方案是由一组被称为“资源”（Resources）的模块化组
 FHIR 相较于现有标准提供了许多改进:
 </p>
 <ul>
-<li>着重于可实现性： FHIR 的实现非常快速且简单（多名开发者曾在一天内就实现了简单的接口）。</li>
-<li>具备多个开发库实现，以及大量可供参考的示例，能够帮助快速启动开发工作。</li>
+<li>着重于可实现性： FHIR 的实现非常快速且简单（多名开发者曾在一天内就完成了简单的接口）。</li>
+<li>具备多个类库实现，以及大量可供参考的示例，能够帮助快速启动开发工作。</li>
 <li>规范（Specification）免费使用，且无任何限制。</li>
-<li>开箱即用的互操作性：基础资源可以直接使用，但也可以根据需要进行适配——这在真实实践中非常普遍 —— 我们在 FHIR 可以通过使用配置文件（Profiles）、扩展（Extensions）、术语集（Terminologies）等来满足本地化的需求。</li>
+<li>开箱即用的互操作性：基础资源可以直接使用，但也可以根据需要进行适配——这在真实实践中非常普遍 —— 我们在 FHIR 可以通过使用配置文件（Profiles）、扩展（Extensions）、术语（Terminologies）等来满足本地化需求。</li>
 <li>从 HL7 第 2 版和 CDA 演进而来的开发路径：这些标准可以共存并相互利用。</li>
-<li>坚实的Web标准基础：包括XML、JSON、HTTP、OAuth等。</li>
+<li>坚实的 Web 标准基础：包括 XML、JSON、HTTP、OAuth 等。</li>
 <li>支持 RESTful 架构，能够通过消息或文档无缝交换信息，并支持基于服务的架构。</li>
-<li>规范非常简洁且易于理解。</li>
-<li>一种便于开发者使用的人类可读的序列化格式。</li>
+<li>简洁易懂的规范。</li>
+<li>为开发人员易于使用提供了人可读的序列化格式。</li>
 <li>基于本体分析（Ontology-based analysis），并通过形式化映射确保正确性（正在开发中）。</li>
 </ul>
 
@@ -57,28 +57,24 @@ FHIR 通过定义一个简易的框架来扩展现有资源，并利用配置文
 
 <h2>示例资源：患者（Patient）</h2>
 <p>
-这个简单的示例展示了资源（Resource） 的重要组成部分：本地扩展、人类可读的 HTML 展示以及标准定义的数据内容。
+这个简单的示例展示了资源（Resource）的重要组成部分：本地扩展、人类可读的 HTML 展示以及标准定义的数据内容。
 </p>
 <img src="shot.png"/>
 
 <p>
-FHIR has resources for administrative concepts such as patient, provider, organization
-and device as well as a wide variety of clinical concepts covering problems, medications,
-diagnostics, care plans, financial concerns and more.
+FHIR 包含了用于管理（administrative）概念的资源，如患者（Patient）、医疗服务提供者（Provider）、组织（Organization）和设备（Device），以及涵盖医疗健康问题、药物、诊断、护理计划、财务事项等广泛临床概念的资源。
 </p>
 
 <a name="status"></a>
-<h2>The FHIR development process</h2>
+<h2>FHIR 标准的开发与完善过程</h2>
 <p>
-FHIR is published as a mixed standard with Normative portions, which are kept stable for implementers, 
-and also parts still undergoing Trial Use. HL7 actively monitors implementations in order to continue 
-to improve the specification to be responsive to their needs. 
-Due to the many advantages FHIR offers, FHIR is widely used around the world, and the implementation
-community is growing quickly.
+FHIR 作为一个混合标准发布，其中规范性部分（Normative portions）保持稳定，以利于实施者使用，同时也有部分仍处于试用阶段（Trial Use）。HL7 积极监控这些实施情况，以便持续改进规范，使其能够更好地响应用户需求。
+
+由于 FHIR 提供的诸多优势，它在全球范围内得到了广泛应用，且其实施社区正在迅速壮大。
 </p>
 
 <p>
-<a href="http://hl7.org/fhir">http://hl7.org/fhir</a>. Follow us on Twitter using <a href="https://twitter.com/search?q=%23FHIR">#FHIR</a>
+<a href="http://hl7.org/fhir">http://hl7.org/fhir</a>. 可以在 Twitter 上用  <a href="https://twitter.com/search?q=%23FHIR">#FHIR</a> 关注我们。
 </p>
 
 [%file newfooter%]
