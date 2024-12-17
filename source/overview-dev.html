@@ -17,53 +17,39 @@ code { counter-increment: listing; }
 [%file newnavbar%]
 
 
-
-
-<h2>FHIR Overview - Developers</h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<h2>FHIR 概述（面向开发者）</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> 工作组</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">标准状态</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
-FHIR (<i>Fast Healthcare Interoperability Resources</i>) is designed to
-enable information exchange to support the provision
-of healthcare in a wide variety of settings. The specification
-builds on and adapts modern, widely used RESTful practices
-to enable the provision of integrated healthcare across a
-wide range of teams and organizations.
+FHIR (<i>Fast Health Interoperable Resources (快速卫生信息交互资源)</i>) 旨在支持在各种不同的环境中提供医疗服务所需的信息交换。该规范建立并适应了现代广泛使用的 RESTful 实践，以促进跨多个团队和组织的集成医疗保健服务的提供。
 </p>
 
 <p>
-The intended scope of FHIR is broad, covering human and veterinary,
-clinical care, public health, clinical trials, administration and
-financial aspects.  The standard is intended for global use and in a wide
-variety of architectures and scenarios.
+FHIR 的预期范围非常广泛，涵盖了人类和兽医、临床护理、公共卫生、临床试验、行政管理及财务方面。该标准旨在全球范围内使用，并适用于各种架构和场景。
 </p>
 
 <a name="Framework"></a>
-<h3>Framework</h3>
+<h3>框架</h3>
 <p>
-FHIR is based on "Resources" which are the common building blocks
-for all exchanges. Resources are an instance-level representation of some kind of healthcare entity.
-All resources have the following features in <a href="resource.html">common</a>:
+FHIR 基于 “资源”（Resources），这些资源是所有交换的通用构建块。资源是某种医疗实体的实例级别表示。所有资源具有以下<a href="resource.html">相同特性</a>:
 </p>
 <ul>
- <li>An identifier for the resource - typically a URL that defines where the resource is found</li>
- <li>Common metadata</li>
- <li>A <a href="narrative.html">human-readable XHTML summary</a></li>
- <li>A set of defined data elements - a different set for each type of resource </li>
- <li>An <a href="extensibility.html">extensibility framework</a> to support variation in healthcare</li>
+ <li>资源的标识符 (Identifier) —— 通常是一个定义了资源所在位置的 URL 。</li>
+ <li>通用元数据</li>
+ <li><a href="narrative.html">人类可读的 XHTML 摘要</a></li>
+ <li>一组对应定义的数据元素，其中每种资源类型都对应着一组独特的数据元素。 </li>
+ <li><a href="extensibility.html">扩展性框架</a>，用于支持医疗业务的本地多样性。</li>
 </ul>
 <p>
-Resource instances are represented as either <a href="xml.html">XML</a>, <a href="json.html">JSON</a> or <a href="rdf.html">RDF</a> and there are currently <%resourcecount%>
-different <a href="resourcelist.html">resource types defined</a> in the FHIR specification.
+资源实例以<a href="xml.html">XML</a>、<a href="json.html">JSON</a> 或 <a href="rdf.html">RDF</a> 格式表示，并且在 FHIR 规范中当前定义了<%resourcecount%>种不同的<a href="resourcelist.html">资源类型</a>
 </p>
 <p>
-This specification describes a set of resources - that is, a set of resource types that describe the set of resource instances that
-can actually be exchanged. The term 'Resource' is sometimes used without clarifying whether it specifically refers to types or instances - the context of use makes this clear.
+本规范描述了一组资源——即一组资源类型（resource types），这些类型定义了实际上可以交换的资源实例（resource instances）集合。术语“资源（Resource）” 有时在使用时没有明确具体指的是类型还是实例 —— 在实际使用时，可以根据上下文具体的场景和情况，来理解或判断出对应的“资源”是类型还是实例。
 </p>
 <a name="Example"></a>
-<h3>Example Resource Instance</h3>
+<h3>资源实例（Resource Instance）示例</h3>
 <p>
-This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in <a href="json.html">JSON</a>. An <a href="xml.html">XML encoding</a> is also defined in the specification.
+这是一个示例，展示了<a href="patient.html">患者</a>如何以<a href="json.html">JSON</a>格式表示为 FHIR 对象。规范中也定义了<a href="xml.html">XML编码</a>，具体可通过上面的链接查看。
 </p>
 
 <div class="example">
@@ -114,130 +100,101 @@ This is an example of how a <a href="patient.html">patient</a> is represented as
 </div>
 
 <p>
-Each instance of a resource consists of:
+每个资源实例包含以下内容：
 </p>
 <ul>
-  <li><b>resourceType</b> (line 2) - Required: FHIR defines many different types of resources. See <a href="resourcelist.html">the full index</a></li>
-  <li><b>id</b> (line 3) - The id of this resource. Always present when a resource is exchanged, except during the create operation (below)</li>
-  <li><b>meta</b> (lines 4 - 7) - Usually Present: <a href="resource.html#meta">Common use/context data to all resources</a> and managed by the infrastructure. Missing if there is no metadata</li>
-  <li><b>text</b> (lines 8 - 11) - Recommended: XHTML that provides a <a href="narrative.html">human readable representation</a> for the resource</li>
-  <li><b>extension</b> (lines 12 - 17) - Optional: <a href="extensibility.html">Extensions</a> defined by the extensibility framework</li>
-  <li><b>data</b> (lines 18 - 42) - Optional: data elements - a different set, defined for each type of resource</li>
+  <li><b>资源类型（resourceType）</b> （第 2 行） - 资源类型是必需项， FHIR 定义了非常多的不同的资源类型. 参考 <a href="resourcelist.html">完整资源列表</a>。</li>
+  <li><b>标志符（id）</b> （第 3 行） - 这个资源的 ID。 在资源交换时总是存在，但在创建操作期间除外。</li>
+  <li><b>元数据（meta）</b> （第 4 - 7 行） - 通常 FHIR 的资源都是有元数据的，它们是 <a href="resource.html#meta">对所有资源通用的上下文数据</a> 并且由系统的基础设施管理。如果资源没有元数据，则该字段会缺失。</li>
+  <li><b>文本（text）</b> （第 8 - 11 行） - 提供该资源<a href="narrative.html">人类可读</a>的 XHTML，推荐资源配备该字段，为对应资源提供人类可读的摘要说明。</li>
+  <li><b>扩展（extension）</b> （第 12 - 17 行） - 可选项，由 FHIR 扩展性框架定义的 <a href="extensibility.html">扩展</a>。</li>
+  <li><b>数据（data）</b> （第 18 - 42 行） - 可选项， 由资源类型定义的数据元素集合，一般资源类型不同对应的数据元素也不同。</li>
 </ul>
 <p>
-Note that although this specification always shows the JSON properties in the order that they are defined, many JSON libraries order properties by other criteria.
+请注意，虽然本规范始终按照定义的顺序显示 JSON 属性，但许多 JSON 库是根据其他标准来排序属性的，因此不应将本规范显示的 JSON 属性顺序作为实际环境中序列化的默认期望顺序。
 </p>
 
 <a name="identity"></a>
-<h3>URLs and Identities</h3>
+<h3>URL 与标识（Identities）</h3>
 <p>
-All resources may have a <code>URL</code> that identifies the resource and specifies where it was/can be accessed from. 
-This URL is not represented inside the resource; the value arises in a context use, and changes as copies of the 
-resource are made, or following other deployment/security related changes. If the resource is accessed via
-the FHIR RESTful API (see immediately below) then the URL for the resource is <code>[base]/[resourceType]/[id]</code> 
-where the <code>resourceType</code> and <code>id</code> come from the resource (see above).
+所有资源都可以有一个标识资源并指定其访问位置的<code>URL</code>。这个 URL 不在资源内部表示；它的值是在使用上下文中产生的，并且在资源副本被创建或经历其他部署/安全相关更改时会发生变化。如果资源是通过 FHIR RESTful API（见下文）访问的，那么资源的 URL 格式为 <code>[base]/[resourceType]/[id]</code>，其中 <code>resourceType</code> 和 <code>id</code> 来自资源本身（见上文）。
 </p>
 <p>
-Some resources - those typically associated with formal publication cycles, rather than operational
-healthcare - have an explicit URL in them, which is normally the URL of master copy of the resource.
-This URL remains constant as the resource is copied across systems. See <a href="references.html#canonical">Canonical URLs</a> for further 
-information.
+一些资源 —— 通常是与 FHIR 规范的正式发布周期相关，而不是与医疗数据相关的资源 —— 包含一个显式的URL，这个 URL 通常是资源主副本的 URL。当资源在不同系统之间复制时，这个 URL 保持不变。更多信息，请参见<a href="references.html#canonical">Canonical URLs</a>。
 </p>
 
 <a name="Interactions"></a>
-<h3>Interactions</h3>
+<h3>资源交互</h3>
 <p>
-For manipulation of resources, FHIR provides a <a href="http.html">REST API</a> with a
-rich but simple set of interactions:
+为了操作资源，FHIR 提供了一个<a href="http.html">REST API</a>，它具有一组丰富且简单的交互操作：
 </p>
 <ul>
-<li><a href="http.html#create">Create</a> = POST https://example.com/base/{resourceType}</li>
-<li><a href="http.html#read">Read</a> = GET https://example.com/base/{resourceType}/{id}</li>
-<li><a href="http.html#update">Update</a> = PUT https://example.com/base/{resourceType}/{id}</li>
-<li><a href="http.html#patch">Patch</a> = PATCH https://example.com/base/{resourceType}/{id}</li>
-<li><a href="http.html#delete">Delete</a> = DELETE https://example.com/base/{resourceType}/{id}</li>
-<li><a href="http.html#search">Search</a> = GET https://example.com/base/{resourceType}?search parameters...</li>
-<li><a href="http.html#history">History</a> = GET https://example.com/base/{resourceType}/{id}/_history</li>
-<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/base/ <i>(POST a transaction bundle to the system)</i></li>
-<li><a href="operations.html">Operation</a> = GET https://example.com/base/{resourceType}/{id}/${opname}</li>
+<li><a href="http.html#create">创建（Create）</a> = POST https://example.com/base/{resourceType}</li>
+<li><a href="http.html#read">查看（Read）</a> = GET https://example.com/base/{resourceType}/{id}</li>
+<li><a href="http.html#update">全量更新（Update）</a> = PUT https://example.com/base/{resourceType}/{id}</li>
+<li><a href="http.html#patch">差分更新（Patch）</a> = PATCH https://example.com/base/{resourceType}/{id}</li>
+<li><a href="http.html#delete">删除（Delete）</a> = DELETE https://example.com/base/{resourceType}/{id}</li>
+<li><a href="http.html#search">搜索（Search）</a> = GET https://example.com/base/{resourceType}?search parameters...</li>
+<li><a href="http.html#history">查看历史（History）</a> = GET https://example.com/base/{resourceType}/{id}/_history</li>
+<li><a href="http.html#transaction">事务（Transaction）</a> = POST https://example.com/base/ <i>(POST a transaction bundle to the system)</i></li>
+<li><a href="operations.html">运维（Operation）</a> = GET https://example.com/base/{resourceType}/{id}/${opname}</li>
 </ul>
 <p>
-The FHIR specification describes other kinds of exchanges beyond this simple RESTful API,
-including exchange of groups of resources as <a href="documents.html">Documents</a>,
-as <a href="messaging.html">Messages</a>, and by using various types of <a href="services.html">Services</a>.
+FHIR 规范除了描述这个简单的 RESTful API 之外，还描述了其他类型的交换方式，包括以<a href="documents.html">文档（Documents）</a>形式交换资源组、以<a href="messaging.html">消息（Messages）</a>形式交换，以及通过使用各种类型的<a href="services.html">服务（Services）</a>进行交换。
 </p>
 
 <a name="Managing"></a>
-<h3>Managing Variability</h3>
+<h3>差异性（Variability）管理</h3>
 <p>
-There is a wide variation
-between different geo-political jurisdictions and segments of the healthcare industry, and no
-central authority to impose common business practices. Because of this,
-the FHIR specification defines an <a href="extensibility.html">extension framework</a> and defines
-<a href="profiling.html">a framework for managing variability</a>.
+不同地理政治管辖区和医疗保健行业的各个部门之间存在广泛的差异，而且没有中央权威机构来强制实施共同的业务实践。由于这一原因，FHIR 规范定义了一个<a href="extensibility.html">扩展框架</a>，并制定了<a href="profiling.html">管理差异性的框架</a>。
 </p>
 <p>
-Another key aspect of the variability encountered in healthcare is that the
-same information may be represented differently and with different levels of
-detail, granularity and nesting by various parties across the system.
-For example, in some cases a blood pressure measurement may be just a simple observation, a
-vital sign measure, while in other cases can be a rich set of highly defined
-data that includes things like controlled vocabularies for posture, exercise, etc.
-The <a href="resourcelist.html">resource types</a> defined in this specification
-focus on the general, common use cases. Richer and more specific content
-can be supported and standardized by <a href="profiling.html">defining "profiles"</a> on
-the base resource types.
+医疗系统中遇到的差异性的另一个关键方面是，相同的信息可能由系统中的不同方以不同的方式、不同的详细程度、粒度和嵌套级别来表示。例如，在某些情况下，血压测量可能只是一个简单的观察值，即生命体征测量；而在其他情况下，则可能是一组高度定义的数据集，包含诸如姿势、运动等受控词汇。
+
+本规范中定义的<a href="resourcelist.html">资源类型</a>专注于一般和常见的用例。更丰富和更具体的内容可以通过在基础资源类型上<a href="profiling.html">定义“配置文件（Profiles）”</a> 来进行标准化。
 </p>
 
 <a name="versions"></a>
-<h3>Managing Versions</h3>
+<h3>版本管理</h3>
 <p>
-Versions, in the context of FHIR, means one of three different things:
+在 FHIR 的上下文中，“版本”意味着以下三种不同的含义之一：
 </p>
 <ol>
- <li>FHIR Version: Which FHIR version is in use?</li>
- <li>Record Version: for tracking changes to resources, and preventing changes overwriting each other</li>
- <li>Business Version: So humans know which version of the content they are dealing with (for some kinds of resources)</li>
+ <li>FHIR 版本: 当前在使用哪个 FHIR 规范的版本？</li>
+ <li>记录版本: 用于跟踪资源的更改，并防止更改相互覆盖。</li>
+ <li>业务版本：为了让人们知道他们正在处理的内容是哪个版本（针对某些类型的资源）。</li>
 </ol>
-<p><b>FHIR Version</b></p>
+<p><b>FHIR 版本</b></p>
 <p>
-Usually, the FHIR version is fixed by the context - the <a href="capabilitystatement.html">CapabilityStatement</a> 
-that a client can use to find out about the server, but there are other ways 
-of <a href="versioning.html">managing multiple FHIR versions</a>.
+通常情况下，FHIR 版本由上下文固定，即在特定的交互或操作环境中，使用的 FHIR 版本是明确指定的 —— 客户端可以使用<a href="capabilitystatement.html">功能声明（CapabilityStatement）</a>来了解服务器及 FHIR 版本的情况，但也有其他方式来<a href="versioning.html">管理多个 FHIR 版本</a>。
 </p>
-<p><b>Record Version</b></p>
+<p><b>记录版本</b></p>
 <p>
-FHIR Servers do not have to support versioning, though they are strongly encouraged to do so.
-There are three different levels of versioning support for FHIR servers:
+FHIR 服务器不需要支持版本管理，但强烈建议这样做。FHIR 服务器对版本管理的支持分为三个不同的级别：
 </p>
 <ul>
- <li>Versioning and .meta.version are not supported (and usually, .meta.lastUpdated is not supported either)</li>
- <li>Versioning and the	VersionId meta-property are supported, but a history of old versions is not kept</li>
- <li>Versioning and the	VersionId meta-property are supported, and a history of old versions is available</li>
+ <li>不支持版本管理和 .meta.version（通常也不支持 .meta.lastUpdated）。</li>
+ <li>支持版本管理以及 VersionId 元属性，但不保留旧版本的历史记录。</li>
+ <li>支持版本管理以及 VersionId 元属性，并且可以获取旧版本的历史记录。</li>
 </ul>
 <p>
-In addition, servers may require that <a href="http.html#concurrency">version</a> aware updates are used, to prevent over-writing changes,
-but this is not described on this page.
+此外，服务器可能会要求使用<a href="http.html#concurrency">版本感知更新</a>，以防止覆盖更改，但这不在本页面描述的范围内。
 </p>
-<p><b>Business Version</b></p>
+<p><b>业务版本</b></p>
 <p>
-Some resources - typically those that represent content that goes through a formal publishing cycle - carry
-a <code>version</code> element that explicitly states what version of the content the resource represents.
-This is changed explicitly by a human, or by some automated process in accordance with applicable business
-rules.
+一些资源 —— 通常是那些经过正式发布周期的内容所对应的资源 —— 包含一个明确指出该资源代表的内容版本的 <code>version</code> 元素。这个版本信息由人工显式更改，或者根据适用的业务规则通过某些自动化流程进行更新。
 </p>
 
 <a name="Creating"></a>
-<h3>Creating a resource</h3>
+<h3>资源创建</h3>
 <p>
-To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource type's respective end
-point.
+<a href="http.html#create">创建一个资源</a>，需要向相应资源类型的端点发送 HTTP POST 请求。
 </p>
 <pre>
   POST https://example.com/base/{resourceType}
 </pre>
 <p>
-In the example below we see the creation of a Patient.
+下面是一个患者资源的创建示例：
 </p>
 
 <div class="example">
@@ -256,28 +213,25 @@ In the example below we see the creation of a Patient.
 </div>
 
 <p>
-Submit a new patient to the server, and ask it to store the patient with an id of its own choice.
+向服务器提交一个新患者，并要求服务器使用其自选的 ID 存储该患者。
 </p>
 <p>
-Notes:
+关于示例中 HTTP 请求行的说明:
 </p>
 <ul>
-  <li><b>/Patient</b> (line 1) - the manager for all patients - use the name of the type of resource</li>
-  <li><b>Authorization</b> (line 2) - see <a href="security.html">Security for FHIR</a></li>
-  <li><b>Accept, Content-Type</b> (lines 3-4) - the content type for all FHIR resources as represented in JSON (or application/fhir+xml for the XML version). FHIR resources are always represented in UTF-8</li>
-  <li><b>id</b> - The client does not need to provide an id for a resource that is being created - the server will assign one. If the client assigns one, the server will overwrite it</li>
-  <li>Resource Content, lines 8+ - There's no meta property at this point. The rest of the resource is the same content as shown above</li>
+  <li><b>/Patient</b> （第 1 行） - 所有患者资源的管理者（manager）—— 使用资源类型的名称，本示例中即 "Patient"。</li>
+  <li><b>Authorization</b> （第 2 行） - 参见 <a href="security.html">FHIR 安全</a></li>
+  <li><b>Accept, Content-Type</b> （第 3-4 行）- 所有 FHIR 资源的内容类型在 JSON 中表示为 application/fhir+json（或在XML版本中表示为 application/fhir+xml）。FHIR 资源始终以 UTF-8 编码表示。</li>
+  <li><b>id</b> - 客户端不需要为正在创建的资源提供ID——服务器将分配一个。如果客户端提供了ID，服务器将会覆盖它。</li>
+  <li>资源内容, 第 8 行及之后 - 本示例中没有元数据。资源的其余部分与上面显示的内容相同。</li>
 </ul>
 
 
 <a name="create-response"></a>
-<h3>Create Response</h3>
+<h3>创建操作的响应</h3>
 <p>
-A response will contain an HTTP code 201 to indicate that the
-Resource has been created successfully. A location header
-indicates where the resource can be fetched in subsequent requests.
-The server may choose to return an <a href="operationoutcome.html">OperationOutcome</a> resource, but is not required to
-do so.
+响应将包含一个 HTTP 代码 201，以表明资源已成功创建。Location 头指示了在后续请求中可以获取该资源的地址。
+服务器可以选择返回一个<a href="operationoutcome.html">操作结果（OperationOutcome）</a>资源，但并非必须这样做。
 </p>
 
 <div class="example">
@@ -300,23 +254,21 @@ do so.
 </div>
 
 <p>
-Notes:
+关于示例中 HTTP 响应行的说明：
 </p>
 <ul>
-  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that use of <a href="https://tools.ietf.org/html/rfc7231">HTTP v 1.1</a> is strongly recommended but not required</li>
-  <li><b>ETag</b> (line 5) - used in the <a href="http.html#update">version aware update</a> pattern (if the server supports versioning)</li>
-  <li><b>Location</b> (line 6) - the id the server assigned to the resource. The id in the URL must match the id in the resource when the resource is subsequently returned</li>
-  <li><b>OperationOutcome</b> (line 9) - OperationOutcome resources in this context have no id or meta element (they have no managed identity)</li>
+  <li><b>HTTP/1.1 201</b> （第 1 行） - 代表操作成功。 注意我们强烈建议使用 <a href="https://tools.ietf.org/html/rfc7231">HTTP v 1.1</a> 协议，但这不是必须的。</li>
+  <li><b>ETag</b> （第 5 行） - 服务器支持版本化控制时，当有关资源的<a href="http.html#update">版本被更新时</a>对应响应就会返回 ETag。</li>
+  <li><b>Location</b> （第 6 行） - 返回一个 URL，带有服务器分配给资源的ID。URL 中的 ID 必须与新创建资源中的 ID 相匹配。</li>
+  <li><b>OperationOutcome</b>  （第 9 行） - 在此上下文中，OperationOutcome 资源没有 ID 或 meta 元素。</li>
 </ul>
 
 <a name="error-response"></a>
-<h4>Error response</h4>
+<h4>错误响应</h4>
 
 <p>
-For a variety of reasons, servers may need to return an error. Clients should be alert to
-authentication related responses, but FHIR content related errors should be returned using an
-appropriate HTTP status code, with an <a href="operationoutcome.html">OperationOutcome</a> resource to provide additional information.
-Here is an example of a server rejecting a resource because of server defined business rules:
+由于多种原因，服务器可能需要返回错误信息。客户端应警惕与身份验证相关的响应，而对于与 FHIR 内容有关的错误，应当使用合适的 HTTP 状态码返回，并且通过一个  <a href="operationoutcome.html">OperationOutcome</a> 资源来提供更多的详情。
+这里有一个例子，展示了服务器因违反其定义的业务规则而拒绝一个资源的情况：
 </p>
 
 <div class="example">
@@ -338,24 +290,23 @@ Here is an example of a server rejecting a resource because of server defined bu
 </div>
 
 <p>
-Notes:
+注:
 </p>
 <ul>
-  <li>The server can return additional structured information using the details of the <a href="operationoutcome.html">OperationOutcome</a></li>
+  <li>服务器可以使用<a href="operationoutcome.html">操作结果（OperationOutcome）</a>的详情返回额外的结构化信息。</li>
 </ul>
 
 
 <a name="read-request"></a>
-<h3>Read Request</h3>
+<h3>读请求</h3>
 <p>
-<a href="http.html#read">Reading a resource</a> is done by sending HTTP GET requests to the desired Resource Type
-end-point.
+通过向所需的资源类型端点发送 HTTP GET 请求来<a href="http.html#read">读取资源</a>。
 </p>
 <pre>
   GET https://example.com/base/{resourceType}/{id}
 </pre>
 <p>
-Here's an example.
+示例如下：
 </p>
 <div class="example">
 <pre class="http linecounter">
@@ -367,19 +318,21 @@ Here's an example.
 </div>
 
 <p>
-Notes:
+关于示例请求行的说明：
 </p>
 <ul>
-  <li><b>347</b> (line 1) - The id of the resource that is being fetched</li>
-  <li><b>_format=xml</b> (line 1) - this is another method for clients to indicate the desired response format, in addition to using the accept header, and is useful for clients that don't have access to the HTTP Headers (e.g. XSLT transforms) (see <a href="http.html#mimetypes">Mime Types</a>)</li>
-  <li><b>cache control</b> (line 4) - Cache control is important, though FHIR itself says nothing about it - see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</a> or <a href="https://www.mnot.net/cache_docs/">https://www.mnot.net/cache_docs/</a></li>
+  <li><b>347</b> （第 1 行） - 我们请求的资源 ID </li>
+  <li><b>_format=xml</b> （第 1 行） - 这是客户端指示所需响应格式的另一种方法，除了使用 Accept 请求头之外。这对于无法访问 HTTP 头的客户端（例如 XSLT 转换）非常有用（参见 <a href="http.html#mimetypes">MIME 类型</a>）。</li>
+  <li><b>cache control</b> （第 4 行） - 缓存控制非常重要，尽管FHIR本身并没有对此作出规定 - 请参阅
+    <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">HTTP/1.1 缓存</a> 或
+    <a href="https://www.mnot.net/cache_docs/">缓存教程和最佳实践</a>。</li>
 </ul>
 
 
 <a name="read-response"></a>
-<h3>Read Response</h3>
+<h3>读响应</h3>
 <p>
-The response to a GET contains the Resource.
+对于 GET 请求的响应，会包含资源的整体内容。
 </p>
 
 <div class="example">
@@ -403,22 +356,19 @@ The response to a GET contains the Resource.
 </div>
 
 <p>
-Notes:
+关于上述 HTTP GET 响应示例的说明：
 </p>
 <ul>
-  <li><b>id</b> (line 9) - The id of the resource. This must match the id in the read request</li>
-  <li><b>versionId</b> (line 11) - The current version id of the resource (if the server supports versioning). Best practice is that this value matches the ETag (see <a href="http.html#update">version aware update</a>), but clients must never assume this</li>
-  <li>Note that servers are not required to support versioning, but are strongly encouraged to do so</li>
-  <li><b>lastUpdated</b> (line 12) - if present, this must match the value in the HTTP header</li>
+  <li><b>id</b> （第 9 行） - 资源的 ID。这个 ID 必须与读请求中的 ID 一致。</li>
+  <li><b>versionId</b> （第 11 行） - 资源的当前版本ID（如果服务器支持版本控制）。最佳实践是这个值应该与 ETag 匹配（参见<a href="http.html#update">版本感知更新</a>)，但客户端永远不应假设这一点。</li>
+  <li>请注意，服务器并非必须支持版本控制，但强烈建议这样做。</li>
+  <li><b>lastUpdated</b> （第 12 行） - 如果存在，这必须与 HTTP 头部中的值匹配。</li>
 </ul>
 
 <a name="search-request"></a>
-<h3>Search Request</h3>
+<h3>搜索请求</h3>
 <p>
-In addition to getting single known resources it's possible to find a collection of resources by
-<a href="http.html#search">searching the resource type end-point</a> with a <a href="search.html">set of
-criteria</a> describing the set of resources that should be retrieved, and their order. The
-general pattern is:
+除了获取单个已知资源外，还可以通过<a href="http.html#search">搜索资源类型端点</a>，使用一组描述应检索的资源集及其顺序的标准来查找一系列资源。通用模式是：
 </p>
 <div class="example">
 <pre class="http">
@@ -426,7 +376,7 @@ general pattern is:
 </pre>
 </div>
 <p>
-The criteria is a set of HTTP parameters that specify which resources to return. The search operation
+标准（criteria）是一组 HTTP 参数，用于指定要返回哪些资源。搜索操作如：
 </p>
 
 <div class="example">
@@ -435,13 +385,13 @@ https://example.com/base/MedicationRequest?patient=347
 </pre>
 </div>
 <p>
-returns all the prescriptions for the patient created above.
+返回之前创建的该患者对应的所有医药处方（prescriptions）。
 </p>
 
 <a name="search-response"></a>
-<h3>Search Response</h3>
+<h3>搜索响应</h3>
 <p>
-The response to a search request is a <a href="bundle.html">Bundle</a>: a list of matching resources with some metadata:
+  对搜索请求的响应是一个 <a href="bundle.html">Bundle</a>：即一个包含匹配资源列表及其部分元数据的集合。
 </p>
 
 <div class="example">
@@ -485,30 +435,29 @@ The response to a search request is a <a href="bundle.html">Bundle</a>: a list o
 </div>
 
 <p>
-Notes:
+对于搜索响应示例的说明：
 </p>
 <ul>
-  <li><b>resourceType/type</b> (line 7/8) - the result of a search is always a bundle of type "searchset"</li>
-  <li><b>id</b> (line 9) - An identifier assigned to this particular bundle. The server should assign a unique id to this bundle that it will not be re-used</li>
-  <li><b>timestamp</b> (line 11) - (if the server supports versioning) This should match the HTTP header, and should be the date the search was executed, or more recent, depending on how the <a href="search.html#currency">server handles ongoing updates</a>. The timestamp must be the same or more recent than the most recent resource in the results</li>
-  <li><b>total</b> (line 13) - The total number of matches in the search results. Not the number of matches in this particular bundle, which may be a <a href="http.html#search">paged view into the results</a></li>
-  <li><b>link</b> (line 14) - A set of named links that give related contexts to this bundle. Names defined in this specification: <a href="http.html#search">first</a>, <a href="http.html#search">prev</a>, <a href="http.html#search">next</a>, <a href="http.html#search">last</a>, <a href="http.html#search">self</a></li>
-  <li><b>entry</b> (line 23) - Actual resources in this set of results</li>
-	<li><b>entry.resource.id</b> (line 25) - Note that in some bundles, the combination of the resource type and <code>entry.resource.id</code> must be <a href="bundle.html#bundle-unique">unique in the bundle</a></li>
-  <li>The search operation is also able to <a href="search.html#include">return additional related resources</a> as well</li>
+  <li><b>resourceType/type</b> （第 7、8 行）- 搜索结果始终是一个类型为 "searchset" 的 Bundle。</li>
+  <li><b>id</b> （第 9 行） - 分配给这个特定 Bundle 的标识符。服务器应当为这个 Bundle 分配一个唯一的 ID，并且这个 ID 不应被重复使用。</li>
+  <li><b>timestamp</b> （第 11 行） - （如果服务器支持版本控制）这应当与对应 HTTP 头（timestamp）信息相匹配，并且应该是执行搜索的日期，或者根据服务器如何处理<a href="search.html#currency">正在进行的更新</a>，可能是更近的日期。时间戳必须与结果中最新的资源相同或更为近期。</li>
+  <li><b>total</b> （第 13 行） - 搜索结果中的总匹配数。这并不是指这个特定 Bundle 中的匹配数量，后者特定 Bundle 的匹配数量可能是<a href="http.html#search">分页显示的结果</a>。</li>
+  <li><b>link</b> （第 14 行） - 一组命名的链接，为这个 Bundle 提供相关上下文。本规范中定义的名称包括：<a href="http.html#search">首页</a>、<a href="http.html#search">上一页</a>、<a href="http.html#search">下一页</a>、<a href="http.html#search">末页</a>和<a href="http.html#search">当前页</a>。</li>
+  <li><b>entry</b> （第 23 行） - 这组 Bundle 结果中的实际资源。</li>
+	<li><b>entry.resource.id</b> （第 25 行） - 请注意，在某些 Bundle 中，资源类型与 <code>entry.resource.id</code> 的组合必须在该 Bundle 内是<a href="bundle.html#bundle-unique">唯一的</a>。</li>
+  <li>搜索操作还能够<a href="search.html#include">返回额外的相关资源</a>。</li>
 </ul>
 
 <a name="update-request"></a>
-<h3>Update Request</h3>
+<h3>更新请求</h3>
 <p>
-The client sends the server a new version of the resource to replace the existing version - it PUTs it to the location of the existing resource:
+客户端向服务端发送一个资源的新版本以替换当前存在的版本 —— 也就是向当前存在的资源发起 PUT 更新操作：
 </p>
 <pre>
   PUT https://example.com/base/{resourceType}/{id}
 </pre>
 <p>
-Note that there does not need to be a resource already existing at {id} - the server may elect to automatically create the resource at the specified address.
-Here is an example of updating a patient:
+请注意，发起 PUT 请求时对应 {id} 不要求这个资源之前已创建 —— 服务器会选择自动在指定地址创建对应资源。
 </p>
 
 <div class="example">
@@ -532,21 +481,21 @@ Here is an example of updating a patient:
 </pre>
 </div>
 
- <p>
-Notes:
+<p>
+关于 PUT 更新请求行示例的说明：
 </p>
 <ul>
-  <li><b>resourceType</b> (line 1) - "Patient" in the URL must match the resource type in the resource (line 9)</li>
-  <li><b>resource id</b> (line 1, "347") - This must match the id in the resource (line 10)</li>
-  <li><b>If-Match</b> (line 6) - if this is provided, it must match the value in meta.versionId (line 12), and the server must check the version integrity, or return 412 if it doesn't support versions</li>
-  <li><b>meta.lastUpdated</b> (line 13) - This value is ignored, and will be updated by the server (mostly, but not always, if the server does not support versioning)</li>
-  <li><b>resource content</b> (line 14) - Not shown here, the same as Patient above</li>
+  <li><b>resourceType</b> （第 1 行） - URL 中的 "Patient" 必须与资源中的资源类型（第 9 行）相匹配。</li>
+  <li><b>resource id</b> （第 1 行, "347"） - 这必须与资源中的 ID（第 10 行）相匹配。</li>
+  <li><b>If-Match</b> （第 6 行） - 如果提供了此信息，它必须与 meta.versionId（第 12 行）中的值相匹配，并且服务器必须检查版本完整性，或者如果服务器不支持版本控制，则返回 412 错误。</li>
+  <li><b>meta.lastUpdated</b> （第 13 行） - 此值将被忽略，并由服务器更新（大多数情况下，但不总是，特别是在服务器不支持版本控制的情况下）。</li>
+  <li><b>resource content</b> (line 14) - 未在此显示，与之前的 Patient 相同。</li>
 </ul>
 
 <a name="update-response"></a>
-<h3>Update Response</h3>
+<h3>更新响应</h3>
 <p>
-The response to an update request has metadata / status, and optionally an OperationOutcome:
+对更新请求的响应包含元数据/状态信息，并且可选地包含一个 OperationOutcome：
 </p>
 
 <div class="example">
@@ -570,16 +519,16 @@ The response to an update request has metadata / status, and optionally an Opera
 
 
 <p>
-Notes:
+关于上述更新响应示例的说明：
 </p>
 <ul>
-  <li><b>ETag</b> (line 5) - This is the versionId of the new version, and is also found in the location header (line 6) (if the server supports versioning)</li>
+  <li><b>ETag</b>（第 5 行） - 这是新版本的 versionId，并且也在位置头信息中找到（第 6 行）（如果服务器支持版本控制）。</li>
 </ul>
 
 <a name="base"></a>
-<h3>Base Resource Content</h3>
+<h3>基础资源内容</h3>
 <p>
-Here is an example that shows all the information found in all resources, fully populated:
+以下是一个示例，展示了所有资源中包含的所有信息，并且这些信息已被完全填充：
 </p>
 
 <div class="example">
@@ -607,33 +556,33 @@ Here is an example that shows all the information found in all resources, fully 
 </div>
 
 <p>
-Implementers notes:
+实现者注意事项
 </p>
 <ul>
-  <li><b>resourceType</b> (line 2) - always found in every resource. In XML, this is the name of the root element for the resource</li>
-  <li><b>id</b> (line 3) - defined when the resource is created, and never changed. Only missing when the resource is first created</li>
-  <li><b>meta.versionId</b> (line 5) - changes each time any resource contents change (except for the last 3 elements in meta - <code>profile</code>, <code>security</code> and <code>tag</code>)</li>
-  <li><b>meta.lastUpdated</b> (line 6) - Changes when the versionId changes. Systems that don't support versions usually don't track lastUpdated either</li>
-  <li><b>meta.profile</b> (line 7) - An assertion that the content conforms to a profile. See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion. Can be changed as profiles and value sets change or the system rechecks conformance</li>
-  <li><b>meta.security</b> (lines 8 - 11) - <a href="security-labels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to</li>
-  <li><b>meta.tag</b> (lines 12 - 16) - <a href="resource.html#Meta">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider the tags when interpreting the meaning of a resource</li>
-  <li><b>implicitRules</b> (line 17) - indicates that there is a <a href="profiling.html#agreement">custom agreement</a> about how the resources are used that must be understood in order to safely process the resource. Use of this is discouraged because it restricts sharing, but sometimes necessary</li>
-  <li><b>language</b> (line 18) - The <a href="narrative.html#language">base language of the resource</a>. The resource is allowed to have content from other languages; this is just the base, but should be the main language of the resource</li>
+  <li><b>resourceType</b> （第 2 行） - 始终出现在每个资源中。在 XML 中，这是资源的根元素的名称。</li>
+  <li><b>id</b> （第 3 行） - 在资源创建时定义，并且从未更改。仅在资源首次创建时可能缺失。</li>
+  <li><b>meta.versionId</b> （第 5 行） - 每次任何资源内容发生变化时都会改变（除了元数据中的最后三个元素——<code>profile</code>、<code>security</code> 和 <code>tag</code>）。</li>
+  <li><b>meta.lastUpdated</b> （第 6 行） - 当 versionId 发生变化时，此值也会跟着变更。通常不支持版本控制的系统也不会跟踪 lastUpdated。</li>
+  <li><b>meta.profile</b> （第 7 行） - 断言（assertion）内容符合某个配置文件（profile）。有关进一步的讨论，请参见<a href="profiling.html#resources">扩展和限制资源</a>。随着配置文件和值集的变化，或者系统重新检查符合性时，这个断言可以被更改。</li>
+  <li><b>meta.security</b> （第 8-11 行） - 应用于该资源的<a href="security-labels.html">安全标签</a>。这些标签以特定方式将资源与整体安全策略和基础设施连接起来。当资源发生变化时，或者根据安全子系统的决定，安全标签可以被更新。</li>
+  <li><b>meta.tag</b> （第 12-16 行） - 应用于该资源的<a href="resource.html#Meta">标签</a>。标签用于将资源与流程和工作流关联起来。应用程序在解释资源含义时不需要考虑这些标签。</li>
+  <li><b>implicitRules</b> （第 17 行） - 表示存在一个关于资源使用方式的<a href="profiling.html#agreement">自定义协议</a>，必须理解该协议才能安全地处理资源。虽然不鼓励使用此功能，因为它限制了资源共享，但在某些情况下是必要的。</li>
+  <li><b>language</b> （第 18 行） - 资源的<a href="narrative.html#language">基础语言</a>。资源允许包含其他语言的内容；这只是基础语言，但应该是资源的主要语言。</li>
 </ul>
 
 <p>
-The base properties of all resources are defined on the resource types <a href="resource.html">Resource</a> and <a href="domainresource.html">DomainResource</a>.
+所有资源的基础属性定义在资源类型 <a href="resource.html">Resource</a> 和 <a href="domainresource.html">DomainResource</a> 中。
 </p>
 
 <p>
-Want more information?
+更多信息
 </p>
 <ul>
- <li><a href="modules.html">Getting Started</a></li>
- <li><a href="resourcelist.html">Resource Index</a></li>
- <li><a href="resourceguide.html">Resource Guide</a></li>
- <li><a href="documentation.html">Documentation Index</a></li>
- <li><a href="https://confluence.hl7.org/display/FHIR/Implementer+Support">Support Links</a></li>
+ <li><a href="modules.html">入门指南</a></li>
+ <li><a href="resourcelist.html">资源列表</a></li>
+ <li><a href="resourceguide.html">资源指南</a></li>
+ <li><a href="documentation.html">文档目录</a></li>
+ <li><a href="https://confluence.hl7.org/display/FHIR/Implementer+Support">支持链接</a></li>
 </ul>
 
 [%file newfooter%]
