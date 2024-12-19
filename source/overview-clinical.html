@@ -16,248 +16,218 @@ code { counter-increment: listing; }
 <body>
 [%file newnavbar%]
 
+<h2>FHIR 概述（面向临床医生）</h2>
+
+
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg%20fhir%]">[%wgt fhir%]</a> 工作组</td><td id="fmm"><a href="versions.html#maturity">成熟度</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">标准状态</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 
 
-<h2>FHIR Overview - Clinicians</h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<p>FHIR (<i>Fast Healthcare Interoperability Resources (快速卫生信息交互资源)</i>) 被设计用于实现医疗相关信息的交换。这包括临床数据以及与医疗相关的行政管理、公共卫生和研究数据。它涵盖了人类医学和兽医医学，并旨在能够在全球范围内各种环境中使用，包括住院、门诊、急诊、长期护理、社区护理、相关健康服务等。</p>
 
-<p>
-FHIR (<i>Fast Healthcare Interoperability Resources</i>) is designed to enable the exchange of healthcare-related information.
-This includes clinical data as well as healthcare-related administrative, public health and research data.  It covers
-both human and veterinary medicine and is intended to be usable world-wide in a wide variety of contexts, including in-patient,
-ambulatory care, acute care, long-term care, community care, allied health, etc.
-</p>
 
-<p>
-The FHIR specification is targeted to individuals and organizations developing software and
-architecting interoperable solutions that will be using FHIR.
-The FHIR specification does not attempt to
-define good or best clinical practices, nor does it provide guidance on user interfaces or workflows.  Guidance
-in these areas may be useful, but it is outside of FHIR's scope.
-</p>
-<p>
-Because of FHIR's focus on implementation, many aspects of the specification deal with the technical underpinnings of the
-exchange of clinical information between electronic systems.  This section provides an introduction to
-what FHIR provides, and tries to highlight those portions of the specification
-that are likely to be of most interest to the clinical community while skipping over some of the technical
-minutiae of interoperability.  However, clinical readers are welcome to explore some of the more
-technical areas if they find them of interest.
-</p>
+
+<p>FHIR 规范针对的是开发软件和设计互操作解决方案的个人和组织，这些解决方案将使用 FHIR。
+FHIR 规范并不试图定义良好或最佳的临床实践，也不提供用户界面或工作流程的指导。这些领域的引导指南当然是有意义的，但超出了 FHIR 的范围。</p>
+
+
+
+<p>由于 FHIR 关注实施，规范的许多方面都涉及到电子系统之间临床信息交换的技术基础。本节介绍了 FHIR 提供的内容，并试图突出那些对于临床社区最感兴趣的规范部分，同时跳过一些互操作性的技术细节。然而，临床读者如果感兴趣的话，也可以探索一些更技术性的领域。</p>
+
+
 
 <a name="Resources"></a>
-<h3>Resources</h3>
-<p>
-From a clinical perspective, the most important parts of the FHIR specification to understand are the Resources.
-Think of Resources as paper "forms" reflecting different types of clinical and administrative information that can
-be captured and shared.
-The FHIR specification defines a generic "form template" for each type of clinical information - so one for
-allergies, one for prescriptions, one for referrals, etc.
-</p>
-<p>
-FHIR data consists of repositories containing completed "forms" (resource instances).  The resource instances describe patient-related information (such as
-demographics, health conditions and procedures) as well as administrative information (such as practitioners, organizations and locations).  Some resources are infrastructure components used to
-support the technical exchange of information by describing what systems are able to do, defining allowed sets
-of codes, etc.  FHIR repositories might be electronic health record (EHR) systems, pharmacy systems,
-hospital information systems (HIS), etc.  Some systems, such as clinical decision support engines, may
-expose FHIR interfaces even though they don't actually store any patient or administrative information themselves.
-</p>
-<p>
-Each Resource defines a small amount of highly-focused data. A single resource doesn't say very much, but a collection of Resources
-taken together creates a useful clinical record. Information systems map the actions that a user takes (look up patient records, make a
-note in their history, etc.) to operations on the relevant resources.
-</p>
+
+
+
+<h3>资源</h3>
+
+
+
+<p>从临床角度来看，理解 FHIR 规范最重要的是资源（Resources）。
+可以将资源视为反映不同类型临床和管理信息的纸质“表单（forms）”，这些信息可以被不同的人捕获和共享。
+FHIR 规范为每种类型的临床信息定义了一个通用的“表单模板” —— 因此有过敏反应的模板、处方的模板、转诊的模板等。</p>
+
+
+<p>FHIR 数据由包含已完成“表单”（资源实例）的存储库（repositories）组成。这些资源实例描述了与患者相关的信息（如人口统计学、健康状况和医疗程序）以及行政管理信息（如从业者、组织和地点）。一些资源是用于通过描述系统能够做什么、定义允许的代码集等技术来支持信息交换的基础设施组件。FHIR 存储库可能是电子健康记录（EHR）系统、药房系统、医院信息系统（HIS）等。一些系统，如临床决策支持引擎，即使它们实际上不存储任何患者或管理信息，也可能提供 FHIR 接口。</p>
+
+
+<p>每个资源定义了一小部分高度聚焦的数据。单个资源本身并不包含太多信息，但一组资源合起来可以创建有用的临床记录。信息系统会基于 FHIR 将用户执行的操作（查找患者记录、在病史中做笔记等）映射到相关资源上的操作。</p>
+
 
 <a name="Extensibility"></a>
-<h3>Extensibility and Profiling</h3>
-<p>
-The paper forms (Resources) in FHIR are somewhat generic.  They have to be usable in different countries and by different types of clinicians
-in different contexts (human care, veterinary care, public health, research, etc.).  Recognizing that
-a <i>one size fits all</i> approach is not appropriate in the healthcare space, FHIR provides the ability to adjust the
-forms (Resources) to be able to handle the needs of different implementation spaces by defining "extensions"
-as well as enforcing constraints.  For example, a "prescription" form might have extension elements
-added to support tracking of restricted medications while also constraining the codes that can be used
-to communicate types of drugs to a particular national standard.  Forms are designed in such
-a way that these changes can be made without changing how systems pass forms around, enabling any system to
-consume completed forms even if they have additional elements added, whether or not those additional elements
-are used by the receiving system.
-</p>
-<p>
-To keep the base forms that everyone uses from being overly complex, FHIR has a rule that, in most cases, a
-resource will only include data elements if there's an expectation that most implementations will use that particular
-data element.  That doesn't mean the data must always exist.  For example, most systems in the world are capable
-of tracking "deceased date" for a patient, even though that element will be blank for many patient records.  On
-the other hand, not as many systems track hair color, so hair color would be omitted from the base form and those
-systems that need it (perhaps in a specialty clinical or research setting) can use a FHIR extension to
-capture it if needed.
-</p>
-<p>
-To keep the number of resources reasonable, some of them are fairly broad.  For example, the <a href="observation.html">Observation</a>
-resource is used for vital signs, lab results, psychological assessments and a variety of other things.  To support setting rules
-for more narrow areas (e.g. "<i>What should I send if I want to share a blood pressure?</i>"), FHIR allows the creation of
-Profiles.  There will be a great deal of clinical work involved in forming consensus around how different types of
-detailed clinical information should be captured and shared in particular settings.  Tooling to support the creation
-of profiles directly by clinicians is part of the plan for FHIR, but is still in the very early stages.
-</p>
+
+
+
+<h3>可扩展性和配置文件</h3>
+
+
+<p>FHIR 中的纸质表单（资源）具有一定的通用性。它们必须能够在不同的国家和不同类型的临床医生在不同的环境中使用（人类医疗、兽医医疗、公共卫生、研究等）。认识到“<i>一刀切（one size fits all）</i>”的方法在医疗领域并不合适，FHIR 提供了通过定义“扩展（extensions）”以及强制执行约束来调整表单（资源）的能力，以满足不同实现环境的需求。例如，“处方”表单可能会添加扩展元素以支持受限制药物的跟踪，同时将用于传达药物类型的代码限制为特定的国家标准。表单的设计方式使得这些更改可以在不改变系统传递表单方式的情况下进行，从而使任何系统都能消费已完成的表单，即使这些表单中包含额外的元素。</p>
+
+
+<p>为了保持所有人都使用的资源基础形式不至于过于复杂，FHIR 规定，在大多数情况下，资源只会包含那些大多数实现预期会使用的数据元素。这并不意味着数据必须始终存在。例如，世界上大多数系统都能够跟踪患者的“死亡日期”，即使该元素在许多患者记录中都是空白的。另一方面，并不是那么多系统会跟踪发色，因此发色将从基类表单中省略，需要它的系统（可能是在专科临床或研究环境中）可以使用 FHIR 扩展来获取它（如果需要）。</p>
+
+
+<p>为了保持资源数量的合理性，其中一些资源的定义相当宽泛。例如，<a href="observation.html">Observation</a> 资源用于生命体征、实验室结果、心理评估以及各种其他事项。为了支持为更具体狭义的领域（例如，“<i>如果我想分享血压，我应该发送什么？</i>”）设置规则，FHIR 允许创建配置文件（profile）。在特定环境中形成关于如何获取和共享不同类型详细临床信息的共识将涉及大量的临床工作。直接由临床医生创建配置文件的工具是 FHIR 计划的一部分，但仍在非常早期的阶段。</p>
+
 
 <a name="Narrative"></a>
-<h3>Narrative</h3>
-<p>
-FHIR is intended to support sharing data in a computable manner.  I.e. The information shared should be usable for computer-mediated processes such as decision support, rules triggering, trend analysis, etc.  However, not every system is
-the same and not all systems are able to recognize all discrete data.  Also, there is still considerable value in data exchange
-in circumstances where not all or even none of that data is captured in a discrete manner.  For this reason, FHIR resources
-support sharing not only discrete data for computation, but also a human-readable view so that the humans
-on each end of a healthcare information exchange can still get a full picture of what's going on.
-</p>
-<p>
-Narrative is expected to exist for most resource instances, although it can be omitted in a few limited circumstances.
-In some cases, the narrative will be generated from discrete information.  For example, the narrative for a patient
-might look like this:
-</p>
+
+
+<h3>资源的叙述（Narrative）</h3>
+
+
+<p>FHIR 旨在支持以可计算的方式共享数据。即，共享的信息应可用于计算机媒介的各种计算过程，如决策支持、规则触发、趋势分析等。然而，并非每个系统都相同，也不是所有系统都能识别所有离散数据。此外，在并非所有或甚至没有任何数据以离散方式可以获取的情况下，数据交换仍然具有相当大的价值。因此，FHIR 资源不仅支持共享用于计算的离散数据，还支持人类可读视图，以便医疗信息交换两端的人类仍能全面了解正在发生的情况。</p>
+
+
+<p>大多数资源实例都应存在叙述（Narrative），尽管在少数有限的情况下可以省略。
+在某些情况下，叙述将从离散信息生成。例如，患者的信息可能如下所示：</p>
+
+
 <table>
   <tbody>
     <tr>
       <td>
-<b><u>Peter James Chalmers (OFFICIAL), Jim</u></b><br/>
-<b>identifier</b>: MRN = 12345 (USUAL)<br/>
-<b>telecom</b>: ph: (03) 5555 6473(WORK)<br/>
-<b>gender</b>: MALE<br/>
-<b>birthDate</b>: Dec 25, 1974<br/>
-<b>deceased</b>: false<br/>
+<b><u>Peter James Chalmers (OFFICIAL), Jim</u></b><br>
+<b>identifier</b>: MRN = 12345 (USUAL)<br>
+<b>telecom</b>: ph: (03) 5555 6473(WORK)<br>
+<b>gender</b>: MALE<br>
+<b>birthDate</b>: Dec 25, 1974<br>
+<b>deceased</b>: false<br>
 <b>address</b>: 534 Erewhon St PleasantVille Vic 3999 (HOME)
       </td>
     </tr>
   </tbody>
 </table>
 
-<p>
-In other cases, the narrative might be free-form text commentary entered directly by a practitioner, such as
-referral letters, pathology reports, etc.  Certain parts of the narrative content could also later be exposed as
-discrete data.
-</p>
+
+<p>在其他情况下，叙述可能是由从业者直接输入的自由格式文本，例如转诊信、病理报告等。叙述内容的某些部分也可以在以后作为离散数据呈现。</p>
+
+
 
 <a name="Interfaces"></a>
-<h3>Interfaces</h3>
-<p>
-In addition to defining the "forms" for data exchange (Resources), FHIR also defines a set of interfaces by
-which systems actually share that information.  There are four primary mechanisms
-or "paradigms" of exchange supported by FHIR: via a REST interface, by exchanging Documents, by sending and receiving Messages and by exposing and invoking Services.
-</p>
+
+
+<h3>接口</h3>
+
+
+
+<p>除了定义数据交换的“表单”（资源）外，FHIR 还定义了一组接口，系统通过这些接口实际共享信息。FHIR 支持四种主要的交换机制或“范式（paradigms）”：通过 REST 接口、文档交换（exchanging Documents）、发送和接收消息（Messages）以及暴露和调用服务（Services）。</p>
+
+
 
 <a name="REST"></a>
+
+
 <h4>REST</h4>
-<p>
-REST is the simplest exchange mechanism.  Continuing with the "form" metaphor, a RESTful server can be thought
-of as a room full of filing cabinets.  Within the room is a cabinet for each "type" of form (or Resource) it supports.  The cabinet contains
-folders where each folder has a unique number and represents one particular real-world thing: one Patient, one Encounter,
-one Medication, etc.  Each folder (which represents a single Resource <i>instance</i>) contains multiple pieces of paper, with each piece of paper representing a specific "version"
-of that instance.  Every time someone updates a record, a new piece of paper is added to the top of the
-file folder.  To see the history of a resource, you simply have to flip through the pieces of paper in the folder.
-</p>
-<p>
-Note that a typical medical record is generally a big "folder-of-folders" with many different
-types of 'forms' or 'reports' gathered together. This is convenient for someone who wants to review
-the whole record, but inconvenient for someone updating bits of it.  There's always contention for access
-to it to update the right part. In the computer application the record will be decomposed to its smallest components
-for management purposes, and a computer will (or should) assemble the correct bits as required, by
-following references that exist from one piece of information to the next.
-</p>
-<p>
-Now picture a clerk at the front door of that room.  You can pass the clerk a requisition to have them do something with
-the information in those file cabinets.  The "clerk" and the set of requisition forms on the clerk's counter make up the FHIR restful API.  With that API,
-you can do the following:
-</p>
+
+
+<p>REST 是最简单的交换机制。继续使用“表单”的比喻，一个符合 REST 风格的服务器可以被想象成一个装满文件柜的房间。在房间里，每个它支持的“类型”（或资源）都有一个文件柜。文件柜里包含文件夹，每个文件夹都有一个唯一的编号，代表一个特定的真实世界事物：一个患者、一次就诊、一种药物等。每个文件夹（表示一个单独的资源<i>实例</i>）包含多张纸，每张纸代表该实例的一个特定“版本”。每当有人更新记录时，就会在文件夹顶部添加一张新的纸。要查看资源的历史记录，只需翻阅文件夹中的纸张即可。</p>
+
+
+<p>请注意，典型的医疗记录通常是一个大的“文件夹中的文件夹”，包含许多不同类型的“表单”或“报告”。这对于想要回顾整个记录的人来说很方便，但对于需要更新部分内容的人来说则不太方便。总是存在为了访问和更新正确部分而产生的冲突。在计算机应用程序中，记录将被分解为其最小的组件以便管理，并且计算机（或者应该）通过跟踪从一个信息片段到下一个信息片段的引用，来按需组装正确的部分。</p>
+
+
+
+<p>现在想象一下，在那个房间的前门有一个职员。你可以给这个职员一个请购单，让他们对那些文件柜中的信息进行操作。“职员”和职员柜台上的请购单集合组成了 FHIR RESTful API。通过这个API，你可以做以下事情：</p>
+
+
+
 <ul>
-<li><i>search</i>: Have the clerk search through the folders for one(s) that meet a set of search criteria and give you a copy of the top piece of paper in each relevant folder</li>
-<li><i>read</i>: Get a copy of the top piece of paper (which is the most current version) from a specific folder in one of the cabinets</li>
-<li><i>create</i>: Add a new folder to the appropriate cabinet (with a new number)</li>
-<li><i>update</i>: Add a new page (version) to the contents of a specific folder</li>
-<li><i>delete</i>: Remove a folder from the cabinet (or more accurately, virtually remove it by putting a sticker on it saying "do not open")</li>
-<li><i>history</i>: Look at all the pages in a single folder, in a particular file cabinet or possibly in the whole room.  Such a broad request would be used primarily for administrative purposes rather than clinical purposes</li>
-<li><i>transaction</i>: Give the clerk multiple pieces of paper to place in distinct folders at the same time</li>
-<li><i>operation</i>: Ask the clerk to perform an action or procedure on papers from one or more of the folders - for example, averaging numbers across patients, producing a summary record, or perform a complex search just by ticking a box on a requisition saying "do that one"</li>
+    <li><i>Search 搜索</i>: 让职员根据一组搜索条件查找符合条件的文件夹，并将每个相关文件夹中的最上面一张纸的副本给你。</li>
+    <li><i>Read 读取</i>: 从柜子中的特定文件夹获取最上面一张纸（即最新版本）的副本。</li>
+    <li><i>Create 创建</i>: 在适当的柜子中添加一个新文件夹（带有新编号）。</li>
+    <li><i>Update 更新</i>: 向特定文件夹的内容中添加一个新的页面（版本）。</li>
+    <li><i>Delete 删除</i>: 从柜子中移除一个文件夹（或者更准确地说，通过在上面贴上“请勿打开”的标签来虚拟地移除它）。</li>
+    <li><i>History 历史</i>: 查看单个文件夹、特定文件柜或整个房间中的所有页面。这种宽泛的请求主要用于行政管理目的而非临床目的。</li>
+    <li><i>Transaction 事务</i>: 给职员多张纸，要求同时将其放置在不同的文件夹中</li>
+    <li><i>Operation 操作</i>: 要求职员对一个或多个文件夹中的纸张执行某个操作或程序 —— 例如，计算患者之间的平均数、生成摘要记录，或通过在申请表上打勾说“做那个”来执行复杂搜索。</li>
 </ul>
-<p>
-EHRs and other systems may present a more sophisticated interface to their end users, but behind the scenes they're all
-making these same types of requests to the file clerk.
-</p>
+
+
+<p>EHR 电子健康记录系统和其他系统可能为其最终用户提供更复杂的界面，但在幕后，它们都在向文件管理员提出相同类型的要求。</p>
+
+
 
 <a name="Documents"></a>
-<h4>Documents</h4>
-<p>
-Documents are a familiar mechanism for sharing information in the healthcare space.  They are useful whenever
-there's a desire to guide how a consumer of information will navigate it and there's a need to have a "frozen" view
-of information that can be reliably retrieved even years in the future.  Examples of document-like things in
-healthcare include discharge summaries and lab reports.
-</p>
-<p>
-In FHIR, there's a special resource called <a href="composition.html">Composition</a> that acts as the "cover page"
-for a document.  It identifies the title, author date, relevant patient and the table of contents.  A FHIR document
-can be thought of as a set of sheets (Resource <i>instances</i>) stacked together with a title page on top that's stapled
-together.  That stapled collection can then be stored or passed around, conveying a complete set of information at
-once.
-</p>
+
+
+
+<h4>文档（Documents）</h4>
+
+
+<p>文档是在医疗领域中分享信息的一种常用机制。它们在需要指导消费者如何浏览信息，并且需要有一个可以可靠地在未来几年内检索的“冻结”视图时非常有用。医疗中文档的例子有出院小结、实验室报告等。</p>
+
+
+
+<p>在 FHIR 中，有一个特殊的资源叫做<a href="composition.html">Composition</a>，它充当文档的“封面”。它标识了标题、作者、日期、相关患者和目录。一个 FHIR 文档可以被看作是一叠带有标题页的资源<i>实例</i>，这些实例被装订在一起。然后，这个装订好的集合可以被存储或传递，一次性传达完整的信息集。</p>
+
+
 
 <a name="Messaging"></a>
-<h4>Messaging</h4>
-<p>
-Much healthcare information exchange happens using a messaging paradigm.  In messaging, a set of information is sent
-from one system to another, typically triggered by an event in the sender system.  For example,
-a patient being admitted, a lab test being ordered, a drug being administered, the clock striking 12:00 or someone pressing a button.  The message serves to notify the receiver that the event occurred as well as
-provide details about any existing data that was modified or new data that was created.  Typically
-receiving a message means there's an expectation that the receiving system will "do something" in response.
-</p>
-<p>A message might request that a lab order be
-fulfilled or notify a system that two patient records have been merged or that a patient has been transferred from one bed to
-another.  A message is similar to a document in that it collects resources together, however for a message, the
-"cover page" is a <a href="messageheader.html">MessageHeader</a> that acts as a requisition.  And rather than using a staple, the
-resources are joined together with a paper-clip and there's no expectation that the receiving system will store the
-contents of the message exactly as received, if at all.
-</p>
+
+
+
+<h4>消息传递（Messaging）</h4>
+
+
+<p>许多医疗信息交换是通过消息传递范式进行的。在消息传递中，一组信息从一个系统发送到另一个系统，通常由发送系统中的事件触发。例如，患者入院、检验申请、药物给药、时间到达 12:00 或有人按下了某个按钮。消息的作用是通知接收方该事件已发生，并提供关于任何被修改的现有数据或新创建的数据的详细信息。通常，接收消息意味着期望接收系统将“采取行动”作为响应。</p>
+
+
+<p>一条消息可能会请求完成一条检验申请（lab order），或者通知系统两个患者记录已被合并，或者患者已从一张床位转移到另一张床位。消息类似于文档，因为它将资源汇集在一起，但消息的“封面”是一个<a href="messageheader.html">MessageHeader</a>，它充当申请单。而不是使用订书钉，资源是用回形针连接在一起的 ，并且没有期望接收系统会完全按照接收到的内容存储消息的内容，甚至根本不会存储。</p>
+
+
 
 <a name="Services"></a>
-<h4>Services</h4>
-<p>
-Services can be thought of as a light-weight way of doing messaging.  Rather than a full cover page, a small sticky
-note is attached to the front of a resource.  And sometimes rather than sending a full piece of paper, the relevant
-pieces are cut out and sent as fragments.  The response to a requisition is a similarly paper-clipped bundle of resource
-instances.  Services are likely to be used for things like decision support. E.g. "<i>Is there a problem with prescribing medication
-X for patient Y?</i>" or "<i>What's the recommended care plan for a patient with conditions A, B and C?</i>"
-</p>
+
+
+<h4>服务（Services）</h4>
+
+
+<p>服务可以被认为是一种轻量级的消息传递方式。与其使用完整的封面，资源前面会附上一个小便签。有时，与其发送整张纸，相关的部分会被剪下来作为片段发送。对请求的响应是一个类似的用回形针固定的资源实例束。服务可能用于诸如决策支持之类的事情。例如：“<i>为患者 Y 开具药物 X 是否存在问题？</i>”或“<i>对于患有 A、B 和 C 病症的患者，推荐的护理计划是什么？</i>”</p>
+
+<!-- revision marker -->
 
 <a name="Approaching"></a>
-<h3>Approaching the specification</h3>
-<p>
-A FHIR-based system's capabilities are defined by what the Resources can say and from a clinical perspective, these things define the clinical record:
-</p>
+
+
+
+<h3>解读规范（Approaching the specifications）</h3>
+
+
+
+<p>一个基于 FHIR 的系统的功能由资源可以表示的内容定义，从临床角度来看，这些内容定义了临床记录：</p>
+
+
 <ul>
-  <li>the kinds of Resources that are defined</li>
-  <li>their data contents, and rules about the data such as what terminology codes are supported and/or required</li>
-  <li>how resources reference to each other</li>
-  <li>how you can search for information</li>
+    <li>定义的资源类型</li>
+    <li>它们的数据内容，以及关于数据的规则，例如支持和/或需要哪些术语代码</li>
+    <li>资源如何相互引用</li>
+    <li>如何搜索信息</li>
 </ul>
-<p>
-This information can all be found in the resource definition pages.  The resources most likely to be of interest can be
-found in the following modules:
-</p>
+
+
+
+<p>这些信息都可以在资源定义页面中找到。最有可能引起兴趣的资源可以在以下模块中找到：</p>
+
+
+
 <ul>
- <li><a href="clinicalsummary-module.html">Clinical &amp; Care provision</a></li>
- <li><a href="diagnostics-module.html">Diagnostics</a></li>
- <li><a href="medications-module.html">Medications</a></li>
- <li><a href="administration-module.html">Administrative</a></li>
+    <li><a href="clinicalsummary-module.html">临床与护理模块</a></li>
+    <li><a href="diagnostics-module.html">诊断模块</a></li>
+    <li><a href="medications-module.html">药物模块</a></li>
+    <li><a href="administration-module.html">行政管理模块</a></li>
 </ul>
-<p>
-Instructions on how to interpret the information found on the resource pages can be found <a href="formats.html">here</a>.  The
-<i>Logical table</i> or the <i>UML</i> views are likely to be easiest to understand.  Don't forget to look at the examples
-tab for an idea of what kind of information can be expressed.  Seeing how elements are used to convey real data is often more
-useful than just looking at definitions.  Also, look at the Profiles tab to see examples of how different resources can be
-constrained for use in particular contexts.
-</p>
-<p>
-Clinician and other domain expertise and feedback is always welcome as we continue refining the FHIR specification.  At the top
-of each resource page is a link to the home page for the work group responsible for that particular resource.  If you have feedback
-on resource design, consider getting involved.
-</p>
+
+
+<p>如何解读资源页面上的信息的说明可以在<a href="formats.html">这里</a>找到。 <i>逻辑表（Logical table）</i>或<i>UML</i>视图可能是最容易理解的。 不要忘了查看例子的标签页（examples tab），以了解可以表达什么样的信息。 查看元素如何用于传达实际数据通常比仅仅查看定义更有用。 另外，查看配置文件（Profiles）标签页，以了解不同资源如何在特定上下文中受到限制。</p>
+
+
+
+<p>我们欢迎临床医生和其他领域专家的反馈，以持续完善 FHIR 规范。在每个资源页面的顶部，都有一个链接指向负责该特定资源的工作组的主页。如果您对资源设计有反馈意见，可以考虑参与进来。</p>
+
+
+
 [%file newfooter%]
 
 </body>
